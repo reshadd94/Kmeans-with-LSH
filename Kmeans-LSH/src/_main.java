@@ -23,7 +23,7 @@ public class _main {
 
     public static void main(String[] args){
         System.out.println("Please move the csv file here: " + getLocalPath("\\"));
-        ArrayList<Double[]> points = new ArrayList<Double[]>();
+        ArrayList<Double[]> points = new ArrayList<>();
         try {
             CSVFileReader csvReader = new CSVFileReader(getLocalPath("LSH-nmi.csv"), ',', 0);
             points = csvReader.getPoints();
