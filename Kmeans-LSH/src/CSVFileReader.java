@@ -24,7 +24,6 @@ public class CSVFileReader {
 	}
 
 	public void doImport() throws IOException {
-		Double[] point = new Double[10];
 		String[] nextLine;
 		int counter = 0;
 		int lineNumber = 0;
@@ -33,6 +32,7 @@ public class CSVFileReader {
 		csvReader = new CSVReader(fileReader, seperator, '"', beginWithLine);
 		while ((nextLine = csvReader.readNext()) != null) {
 			if (nextLine != null) {
+				Double[] point = new Double[10];
 				for (int i = 0; i < 10; i++) {
 					if(nextLine[i] != null)
 						point[i] = Double.parseDouble(nextLine[i]);
