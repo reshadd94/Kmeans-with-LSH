@@ -13,7 +13,7 @@ public class CSVFileReader {
 	private char seperator;
 	private String pathOfCSVFile = null;
 	private int beginWithLine;
-	private ArrayList<Double[]> points = new ArrayList<Double[]> ();
+	private ArrayList<Double[]> points = new ArrayList<>();
 
 
 	public CSVFileReader(String csvPath, char seperator, int beginWithLine) throws IOException {
