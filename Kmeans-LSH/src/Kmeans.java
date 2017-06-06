@@ -15,23 +15,20 @@ public class Kmeans implements NMI_Interface {
     private final Point[] points;
 
     // ToDo Change for LSH input, choose most efficient way of kmeans!
-    public Kmeans(Point[] data, int n, int c) {
-        this.N = n;
+    public Kmeans(Point[] data, int c) {
+        this.N = data.length;
         this.C = c;
         this.iter = 0;
-        //this.points    = generatePoints(N,false);
         this.points = data;
-        this.centroids = generatePoints(C,true);
+        this.centroids = generateRandomClusters(C);
         calculateClusters();
     }
 
-    private Point[] generatePoints(int N, boolean assignCluster) {
-        Point[] newPoints = new Point[N];
-        for (int i = 0; i < N; i++) {
-            newPoints[i] = points[(int)randomDouble(1.0,C)];
-            if (assignCluster) {
-                newPoints[i].setCluster(i+1);
-            }
+    private Point[] generateRandomClusters(int c) {
+        Point[] newPoints = new Point[c];
+        for (int i = 0; i < c; i++) {
+            newPoints[i] = points[(int)randomDouble(1,N)];
+            newPoints[i].setCluster(i+1);
         }
 
         return newPoints;
