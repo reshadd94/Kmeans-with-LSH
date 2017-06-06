@@ -1,37 +1,29 @@
+import java.util.ArrayList;
+
 /**
  * Modified by Reshad_Dee on 06.06.2017.
  * <a href="mailto:a1409161@unet.univie.ac.at">Reshad Dernjnai</a>
  * Based on Point.java by Richard Homonnai
  */
 public class Point {
-    double x;
-    double y;
+    double[] data;
     int c;
 
-    public Point(double x, double y, int c) {
-        this.x = x;
-        this.y = y;
+    public Point(double[] data, int c) {
         this.c = c;
+        this.data = data;
     }
 
-    public double getX() {
-        return this.x;
+    public double[] getData() {
+        return data;
     }
 
-    public double getY() {
-        return this.y;
+    public void setData(double[] data) {
+        this.data = data;
     }
 
     public int getCluster() {
         return this.c;
-    }
-
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public void setY(double y) {
-        this.y = y;
     }
 
     public void setCluster(int c) {
@@ -39,6 +31,6 @@ public class Point {
     }
 
     public String pointToString() {
-        return "Point (" + x + ", " + y + ") @Cluster " + c;
+        return "Point (" + data[0] + ", " + data[1] + ") @Cluster " + c;
     }
 }
