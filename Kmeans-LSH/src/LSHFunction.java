@@ -1,3 +1,5 @@
+package kmeans-lsh;
+
 /**
  * Created by Richard Homonnai on 03.06.2017.
  */
