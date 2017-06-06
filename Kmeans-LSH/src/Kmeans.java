@@ -14,7 +14,6 @@ public class Kmeans implements NMI_Interface {
     private final Point[] centroids;
     private final Point[] points;
 
-    // ToDo Change for LSH input, choose most efficient way of kmeans!
     public Kmeans(Point[] data, int c) {
         this.N = data.length;
         this.C = c;
@@ -54,7 +53,6 @@ public class Kmeans implements NMI_Interface {
             for (int i = 0; i < C; i++) {
                 Point newCentroid = calculateMean(i+1);
                 double delta = calculateDistance(centroids[i], newCentroid);
-                //System.out.println("+ New Centroid of Cluster " + (i+1) + ": " + centroids[i] + "(Delta: " + delta +")");
                 centroids[i] = newCentroid;
                 this.iter = this.iter + 1;
                 if (delta > 0.0) {
@@ -62,7 +60,7 @@ public class Kmeans implements NMI_Interface {
                 }
             }
         }
-        System.out.println("! We are converging. Good bye!");
+        //System.out.println("We are converging. Good bye!");
     }
 
     private static double calculateDistance(Point p, Point q) {
