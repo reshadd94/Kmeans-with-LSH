@@ -1,4 +1,3 @@
-import javafx.scene.control.CheckMenuItem;
 
 import java.io.*;
 import java.net.URISyntaxException;
