@@ -5,6 +5,7 @@ import java.util.Random;
 /**
  * Modified by Reshad_Dee on 06.06.2017.
  * <a href="mailto:a1409161@unet.univie.ac.at">Reshad Dernjnai</a>
+ * Based on Generator.java by Richard Homonnai
  */
 public class Kmeans implements NMI_Interface {
     private final int N;

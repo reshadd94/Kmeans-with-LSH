@@ -1,6 +1,7 @@
 /**
  * Modified by Reshad_Dee on 06.06.2017.
- * @author <a href="mailto:a1409161@unet.univie.ac.at">Reshad Dernjnai</a>
+ * <a href="mailto:a1409161@unet.univie.ac.at">Reshad Dernjnai</a>
+ * Based on Point.java by Richard Homonnai
  */
 public class Point {
     double x;
