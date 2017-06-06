@@ -37,8 +37,10 @@ public class _main {
         /*for(int i = 0; i < points.length; i++){
             System.out.println(points[i].pointToString());
         }*/
-
+        long start = System.nanoTime();
         Kmeans kmeans = new Kmeans(points, 15);
+        double elapsedTimeInSec = (System.nanoTime() - start) * 1.0e-9;
+
         Point[] afterkmeans = kmeans.getPoints();
 
         for(int i = 0; i < afterkmeans.length; i++){
@@ -47,7 +49,7 @@ public class _main {
 
         //System.out.println("Number of Points before Kmeans: " + points.length);
         //System.out.println("Number of Points after Kmeans: " + afterkmeans.length);
-
+        System.out.println("Runtime for Kmeans on 10 dim: " + elapsedTimeInSec + " seconds");
 
     }
 }
