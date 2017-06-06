@@ -15,11 +15,12 @@ public class Kmeans implements NMI_Interface {
     private final Point[] points;
 
     // ToDo Change for LSH input, choose most efficient way of kmeans!
-    public Kmeans(int n, int c) {
+    public Kmeans(Point[] data, int n, int c) {
         this.N = n;
         this.C = c;
         this.iter = 0;
-        this.points    = generatePoints(N,false);
+        //this.points    = generatePoints(N,false);
+        this.points = data;
         this.centroids = generatePoints(C,true);
         calculateClusters();
     }
@@ -27,7 +28,7 @@ public class Kmeans implements NMI_Interface {
     private Point[] generatePoints(int N, boolean assignCluster) {
         Point[] newPoints = new Point[N];
         for (int i = 0; i < N; i++) {
-            newPoints[i] = new Point(randomDouble(1.0,C), randomDouble(1.0,C), 0);
+            newPoints[i] = points[(int)randomDouble(1.0,C)];
             if (assignCluster) {
                 newPoints[i].setCluster(i+1);
             }
@@ -50,16 +51,13 @@ public class Kmeans implements NMI_Interface {
 
         while (!finished) {
             finished = true;
-
             for (int i = 0; i < N; i++) {
                 points[i] = assignCluster(points[i]);
             }
             for (int i = 0; i < C; i++) {
                 Point newCentroid = calculateMean(i+1);
                 double delta = calculateDistance(centroids[i], newCentroid);
-
                 //System.out.println("+ New Centroid of Cluster " + (i+1) + ": " + centroids[i] + "(Delta: " + delta +")");
-
                 centroids[i] = newCentroid;
                 this.iter = this.iter + 1;
                 if (delta > 0.0) {
@@ -72,23 +70,31 @@ public class Kmeans implements NMI_Interface {
 
     private static double calculateDistance(Point p, Point q) {
         /* Euclidean distance between two points */
-        return Math.sqrt(Math.pow(q.getX()-p.getX(),2)+Math.pow(q.getY()-p.getY(),2));
+        double distance = 0;
+        double dataP[] = p.getData();
+        double dataQ[] = q.getData();
+        for(int i=0; i<p.getData().length; i++)
+            distance += Math.pow(dataP[i] - dataQ[i],2);
+        return Math.sqrt(distance);
     }
 
     private  Point calculateMean(int clusterNumber) {
-        double sumX = 0.0;
-        double sumY = 0.0;
+        double [] meanData = new double [points[0].getData().length];
         int numPoints = 0;
 
         for (int i = 0; i < N; i++) {
             if (points[i].getCluster() == clusterNumber) {
-                sumX += points[i].getX();
-                sumY += points[i].getY();
+                for(int j = 0; j < meanData.length; j++){
+                    meanData[j] += points[i].getData()[j];
+                }
                 numPoints++;
             }
         }
+        for(int j = 0; j < meanData.length; j++){
+            meanData[j] = meanData[j] / numPoints;
+        }
 
-        return new Point(sumX / numPoints, sumY / numPoints, clusterNumber);
+        return new Point(meanData, clusterNumber);
     }
 
     private Point assignCluster(Point p) {
@@ -113,7 +119,7 @@ public class Kmeans implements NMI_Interface {
         return p;
     }
 
-    public double[][] getVisData() {
+    /*public double[][] getVisData() {
         double [][] data = new double[3][points.length];
         int i = 0;
         for (Point x : points){
@@ -123,7 +129,7 @@ public class Kmeans implements NMI_Interface {
             i++;
         }
         return data;
-    }
+    }*/
 
     public double NMI(ArrayList<Integer> one, ArrayList<Integer> two){
         if(one.size()!=two.size()){
