@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -39,14 +38,15 @@ public class _main {
             System.out.println(points[i].pointToString());
         }*/
 
-        Kmeans kmeans = new Kmeans(points, 10);
+        Kmeans kmeans = new Kmeans(points, 15);
         Point[] afterkmeans = kmeans.getPoints();
 
         for(int i = 0; i < afterkmeans.length; i++){
             System.out.println(afterkmeans[i].pointToString());
         }
-        System.out.println("Number of Points before Kmeans: " + points.length);
-        System.out.println("Number of Points after Kmeans: " + afterkmeans.length);
+
+        //System.out.println("Number of Points before Kmeans: " + points.length);
+        //System.out.println("Number of Points after Kmeans: " + afterkmeans.length);
 
 
     }
