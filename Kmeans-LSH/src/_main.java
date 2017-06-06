@@ -1,3 +1,5 @@
+import javafx.scene.control.CheckMenuItem;
+
 import java.io.*;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -23,15 +25,28 @@ public class _main {
 
     public static void main(String[] args){
         System.out.println("Please move the csv file here: " + getLocalPath("\\"));
-        ArrayList<Double[]> points = new ArrayList<>();
+        ArrayList<double[]> pointsData = new ArrayList<>();
+
         try {
             CSVFileReader csvReader = new CSVFileReader(getLocalPath("LSH-nmi.csv"), ',', 0);
-            points = csvReader.getPoints();
+            pointsData = csvReader.getPoints();
         } catch (IOException e){System.err.println("Caught IOException: " + e.getMessage());}
-
-        for(Double[] d : points){
-            System.out.println(d[0] + " at point[0]");
+        Point[] points = new Point[pointsData.size()];
+        for(int i = 0; i < pointsData.size(); i++){
+            points[i] = new Point(pointsData.get(i), 0);
         }
-        System.out.println(points.size() + " points imported!");
+
+        /*for(int i = 0; i < points.length; i++){
+            System.out.println(points[i].pointToString());
+        }*/
+
+        Kmeans kmeans = new Kmeans(points, points.length, 10);
+        Point[] afterkmeans = kmeans.getPoints();
+
+        for(int i = 0; i < afterkmeans.length; i++){
+            System.out.println(afterkmeans[i].pointToString());
+        }
+
+
     }
 }

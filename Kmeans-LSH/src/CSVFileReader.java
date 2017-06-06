@@ -13,7 +13,7 @@ public class CSVFileReader {
 	private char seperator;
 	private String pathOfCSVFile = null;
 	private int beginWithLine;
-	private ArrayList<Double[]> points = new ArrayList<>();
+	private ArrayList<double[]> points = new ArrayList<>();
 
 
 	public CSVFileReader(String csvPath, char seperator, int beginWithLine) throws IOException {
@@ -32,7 +32,7 @@ public class CSVFileReader {
 		csvReader = new CSVReader(fileReader, seperator, '"', beginWithLine);
 		while ((nextLine = csvReader.readNext()) != null) {
 			if (nextLine != null) {
-				Double[] point = new Double[10];
+				double[] point = new double[10];
 				for (int i = 0; i < 10; i++) {
 					if(nextLine[i] != null)
 						point[i] = Double.parseDouble(nextLine[i]);
@@ -46,11 +46,11 @@ public class CSVFileReader {
 		}
 	}
 
-	public ArrayList<Double[]> getPoints() {
+	public ArrayList<double[]> getPoints() {
 		return points;
 	}
 
-	public void setPoints(ArrayList<Double[]> points) {
+	public void setPoints(ArrayList<double[]> points) {
 		this.points = points;
 	}
 

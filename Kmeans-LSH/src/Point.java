@@ -31,6 +31,13 @@ public class Point {
     }
 
     public String pointToString() {
-        return "Point (" + data[0] + ", " + data[1] + ") @Cluster " + c;
+        String result =  "Point (";
+        for(int i = 0; i < data.length; i++)
+            if(i==0)
+                result = result + data[i];
+            else
+                result = result + ", " + data[i];
+        result = result + ") @Cluster " + c;
+        return result;
     }
 }
