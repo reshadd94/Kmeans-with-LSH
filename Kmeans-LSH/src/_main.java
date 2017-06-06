@@ -39,7 +39,7 @@ public class _main {
             System.out.println(points[i].pointToString());
         }*/
 
-        Kmeans kmeans = new Kmeans(points, 10);
+        Kmeans kmeans = new Kmeans(points, 15);
         Point[] afterkmeans = kmeans.getPoints();
 
         for(int i = 0; i < afterkmeans.length; i++){
