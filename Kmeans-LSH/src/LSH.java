@@ -13,7 +13,7 @@ public class LSH {
 	public LSHFunction[][] initHashFunctions(Point[] points) {
 		int n = points.length;
 		int d = points[0].getData().length;
-		LSHFunction[][] lshFunctions = new LSHFunction[n][d];
+		LSHFunction[][] lshFunctions = new LSHFunction[n][buckets];
 
 		/* generate Random object */
         Random r = new Random();
