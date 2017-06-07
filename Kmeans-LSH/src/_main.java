@@ -34,11 +34,24 @@ public class _main {
             points[i] = new Point(pointsData.get(i), 0);
         }
 
+        Point[] hashedPoints[];
+
         long start = System.nanoTime();
+        LSH lsh = new LSH();
+        LSHFunction[][] lshFunction = lsh.initHashFunctions(points);
+        double[] hashsignatures = lsh.calculateHashFunctions(points, lshFunction);
+        double elapsedTimeInSec = (System.nanoTime() - start) * 1.0e-9;
+        System.out.println("Runtime for hashing of 10 dim dataset: " + elapsedTimeInSec + " seconds");
+
+        for(int i = 0; i < hashsignatures.length; i++){
+            System.out.println(hashsignatures[i]);
+        }
+
+        /*long start = System.nanoTime();
         Kmeans kmeans = new Kmeans(points, 15);
         double elapsedTimeInSec = (System.nanoTime() - start) * 1.0e-9;
 
-        Point[] afterkmeans = kmeans.getPoints();
+        Point[] afterkmeans = kmeans.getPoints();*/
 
         /*for(int i = 0; i < afterkmeans.length; i++){
             System.out.println(afterkmeans[i].pointToString());
@@ -47,7 +60,7 @@ public class _main {
         //System.out.println("Number of Points before Kmeans: " + points.length);
         //System.out.println("Number of Points after Kmeans: " + afterkmeans.length);
 
-        System.out.println("Runtime for Kmeans on 10 dim: " + elapsedTimeInSec + " seconds");
+       /* System.out.println("Runtime for Kmeans on 10 dim: " + elapsedTimeInSec + " seconds");*/
 
     }
 }
