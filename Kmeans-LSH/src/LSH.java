@@ -13,7 +13,7 @@ public class LSH {
 	public void initHashFunctions(Point[] points) {
 		int n = points.length;
 		int d = points[0].getData().length;
-		LSHFunction[][] lshFunctions = new LSHFunction[points.length][dimension];
+		LSHFunction[][] lshFunctions = new LSHFunction[n][d];
 
 		/* generate Random object */
         Random r = new Random();
@@ -35,7 +35,7 @@ public class LSH {
 		double sum = 0.0;
 		int n = points.length;
 		int d = points[0].getData().length;
-		double[][] ret = new double[n][d];
+		double[] ret = new double[n];
 
 		for (int i = 0; i < n; i++) {
 			sum = 0;
@@ -43,6 +43,12 @@ public class LSH {
 			for (int j = 0; j < d; j++) {
 				sum += points[i].getDataPoint(j) * lshFunctions[i][j].getA(j);
 			}
+
+			sum += lshFunctions[i][i].getB();
+
+			ret[i] = Math.floor(sum / w);
 		}
+
+		return ret;
 	}
 }
