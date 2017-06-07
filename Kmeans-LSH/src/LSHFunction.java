@@ -10,8 +10,10 @@ public class LSHFunction {
 		this.b = b;
 	}
 
-	public void LSHFunction() {
+	public void LSHFunction(int n) {
 		/* empty constructor */
+		this.a = new double[n];
+		this.b = 0.0;
 	}
 
     public double getA(int i) {
