@@ -18,6 +18,10 @@ public class Point {
         return data;
     }
 
+	public double getDataPoint(int i) {
+		return data[i];
+	}
+
     public void setData(double[] data) {
         this.data = data;
     }
