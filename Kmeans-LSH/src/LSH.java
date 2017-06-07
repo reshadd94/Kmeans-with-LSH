@@ -55,7 +55,7 @@ public class LSH {
 			}
 
 			/* add correction value to sum */
-			sum += lshFunctions[i][i].getB();
+			sum += lshFunctions[i][0].getB();
 
 			/* round down and save signature value */
 			ret[i] = Math.floor(sum / w);
