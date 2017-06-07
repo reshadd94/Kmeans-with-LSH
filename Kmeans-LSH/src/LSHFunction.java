@@ -5,11 +5,6 @@ public class LSHFunction {
 	private double[] a;
 	private double b;
 
-	public void LSHFunction(double[] a, double b) {
-		this.a = a;
-		this.b = b;
-	}
-
 	public void LSHFunction(int n) {
 		/* empty constructor */
 		this.a = new double[n];

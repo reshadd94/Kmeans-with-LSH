@@ -21,7 +21,7 @@ public class LSH {
 		/* initialize the LSH functions */
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < buckets; j++) {
-				lshFunctions[i][j].setA(new double[n]);
+				lshFunctions[i][j] = new LSHFunction(d);
 				/* initialize vector a */
 				for (int k = 0; k < d; k++) {
 					lshFunctions[i][j].setA(r.nextGaussian(), k);
