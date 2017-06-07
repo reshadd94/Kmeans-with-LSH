@@ -14,8 +14,8 @@ public class LSHFunction {
 		/* empty constructor */
 	}
 
-    public double[] getA() {
-        return this.a;
+    public double getA(int i) {
+        return this.a[i];
     }
     
     public double getB() {

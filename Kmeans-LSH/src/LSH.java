@@ -30,4 +30,18 @@ public class LSH {
 			}
 		}
 	}
+
+	double[] calculateHashFunctions(Point[] points, LSHFunction[][] lshFunctions) {
+		double sum = 0.0;
+		int n = points.length;
+		int d = points[0].getData().length;
+
+		for (int i = 0; i < n; i++) {
+			sum = 0;
+
+			for (int j = 0; j < d; j++) {
+				sum += points[i].getDataPoint(j) * lshFunctions[i][j].getA(j);
+			}
+		}
+	}
 }
