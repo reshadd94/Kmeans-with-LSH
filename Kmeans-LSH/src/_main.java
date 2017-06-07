@@ -24,10 +24,10 @@ public class _main {
 
     public static void main(String[] args){
         System.out.println("Please move the csv file here: " + getLocalPath("\\"));
-        //Data import from CSV!
+        //Data import from CSV! Because hash calculation are taking to long we are importing here only 11000 lines of csv!
         ArrayList<double[]> pointsData = new ArrayList<>();
         try {
-            CSVFileReader csvReader = new CSVFileReader(getLocalPath("LSH-nmi.csv"), ',', 290000);
+            CSVFileReader csvReader = new CSVFileReader(getLocalPath("LSH-nmi.csv"), ',', 280500);
             pointsData = csvReader.getPoints();
         } catch (IOException e){System.err.println("Caught IOException: " + e.getMessage());}
         Point[] points = new Point[pointsData.size()];
@@ -48,8 +48,19 @@ public class _main {
             System.out.println(hashsignatures[i]);
         }
 
+        //Data import from CSV! Whole dataset 291500!
+        pointsData = new ArrayList<>();
+        try {
+            CSVFileReader csvReader = new CSVFileReader(getLocalPath("LSH-nmi.csv"), ',', 0);
+            pointsData = csvReader.getPoints();
+        } catch (IOException e){System.err.println("Caught IOException: " + e.getMessage());}
+        points = new Point[pointsData.size()];
+        for(int i = 0; i < pointsData.size(); i++){
+            points[i] = new Point(pointsData.get(i), 0);
+        }
+
         //Kmeans on 10 Dimensions
-        /*start = System.nanoTime();
+        start = System.nanoTime();
         Kmeans kmeans = new Kmeans(points, 15);
         elapsedTimeInSec = (System.nanoTime() - start) * 1.0e-9;
         Point[] afterkmeans = kmeans.getPoints();
@@ -58,7 +69,7 @@ public class _main {
         }
         System.out.println("Number of Points before Kmeans: " + points.length);
         System.out.println("Number of Points after Kmeans: " + afterkmeans.length);
-        System.out.println("Runtime for Kmeans on 10 dim: " + elapsedTimeInSec + " seconds");*/
+        System.out.println("Runtime for Kmeans on 10 dim: " + elapsedTimeInSec + " seconds");
 
     }
 }

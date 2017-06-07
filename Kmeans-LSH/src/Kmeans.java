@@ -3,6 +3,8 @@ import java.util.Collections;
 import java.util.Random;
 
 /**
+ *
+ *
  * Modified by Reshad_Dee on 06.06.2017.
  * <a href="mailto:a1409161@unet.univie.ac.at">Reshad Dernjnai</a>
  * Based on Generator.java by Richard Homonnai
@@ -113,18 +115,6 @@ public class Kmeans implements NMI_Interface {
         }
         return p;
     }
-
-    /*public double[][] getVisData() {
-        double [][] data = new double[3][points.length];
-        int i = 0;
-        for (Point x : points){
-            data[0][i] = x.getX();
-            data[1][i] = x.getY();
-            data[2][i] = x.getCluster();
-            i++;
-        }
-        return data;
-    }*/
 
     public double NMI(ArrayList<Integer> one, ArrayList<Integer> two){
         if(one.size()!=two.size()){
