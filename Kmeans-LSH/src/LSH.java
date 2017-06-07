@@ -10,6 +10,9 @@ public class LSH {
 	public void LSH() {
 	}
 
+	/**
+	 * initialize hash functions for given data sets
+	 */
 	public LSHFunction[][] initHashFunctions(Point[] points) {
 		int n = points.length;
 		int d = points[0].getData().length;
@@ -24,6 +27,7 @@ public class LSH {
 				lshFunctions[i][j] = new LSHFunction(d);
 				/* initialize vector a */
 				for (int k = 0; k < d; k++) {
+                    /* initialize hash function with Gaussian distribution */
 					lshFunctions[i][j].setA(r.nextGaussian(), k);
 				}
                 /* initialize b */
@@ -33,6 +37,9 @@ public class LSH {
 		return lshFunctions;
 	}
 
+	/**
+	 * do the actual calculation using dot product projection
+	 */
 	double[] calculateHashFunctions(Point[] points, LSHFunction[][] lshFunctions) {
 		double sum = 0.0;
 		int n = points.length;
@@ -42,15 +49,19 @@ public class LSH {
 		for (int i = 0; i < n; i++) {
 			sum = 0;
 
+            /* dot product calculation */
 			for (int j = 0; j < d; j++) {
 				sum += points[i].getDataPoint(j) * lshFunctions[i][j].getA(j);
 			}
 
+			/* add correction value to sum */
 			sum += lshFunctions[i][i].getB();
 
+			/* round down and save signature value */
 			ret[i] = Math.floor(sum / w);
 		}
 
+		/* return signature values for all data points */
 		return ret;
 	}
 }
