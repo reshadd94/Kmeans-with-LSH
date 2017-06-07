@@ -10,7 +10,7 @@ public class LSH {
 	public void LSH() {
 	}
 
-	public void initHashFunctions(Point[] points) {
+	public LSHFunction[][] initHashFunctions(Point[] points) {
 		int n = points.length;
 		int d = points[0].getData().length;
 		LSHFunction[][] lshFunctions = new LSHFunction[n][d];
@@ -29,6 +29,7 @@ public class LSH {
                 lshFunctions[i][j].setB(r.nextDouble() * w);
 			}
 		}
+		return lshFunctions;
 	}
 
 	double[] calculateHashFunctions(Point[] points, LSHFunction[][] lshFunctions) {
