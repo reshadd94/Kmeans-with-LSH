@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.Random;
 
 /**
- *
+ * Our Kmeans modified to take multi dimensional data input!
  *
  * Modified by Reshad_Dee on 06.06.2017.
  * <a href="mailto:a1409161@unet.univie.ac.at">Reshad Dernjnai</a>
@@ -16,6 +16,12 @@ public class Kmeans implements NMI_Interface {
     private final Point[] centroids;
     private final Point[] points;
 
+    /**
+     * Constructor takes array of points and c is centroid which should be init as zero.
+     *
+     * @param data
+     * @param c
+     */
     public Kmeans(Point[] data, int c) {
         this.N = data.length;
         this.C = c;
