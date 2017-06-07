@@ -24,6 +24,10 @@ public class LSHFunction {
         return this.b;
     }
     
+    public void setA(double[] a) {
+        this.a = a;
+    }
+    
     public void setA(double a, int i) {
         this.a[i] = a;
     }
