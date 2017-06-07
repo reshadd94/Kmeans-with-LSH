@@ -1,5 +1,3 @@
-
-
 /**
  * Created by Richard Homonnai on 03.06.2017.
  */
@@ -24,8 +22,8 @@ public class LSHFunction {
         return this.b;
     }
     
-    public void setA(double[] a) {
-        this.a = a;
+    public void setA(double a, int i) {
+        this.a[i] = a;
     }
     
     public void setB(double b) {
